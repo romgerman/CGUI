@@ -1,4 +1,3 @@
-
 # CGUI
 This plugin is heavily WIP.
 
@@ -10,9 +9,15 @@ This plugin is heavily WIP.
 `GUITest` — Is for testing.
 
 ## Usage
+Firstly you need to require one of the files inside your plugin.
+```csharp
+// Requires: CGUI
+```
+
 `GUIObject` represents a basic UI element and acts as `ICollection` for components derived from `GUIComponentBase`.
+
 **Example:**
-```charp
+```csharp
 // Basic text UI element
 var element = new GUIObject()
 {
@@ -25,6 +30,7 @@ To show your UI to a player you can use `GUIObject.ShowUI(BasePlayer)`.
 To make more advanced elements you should make your own classes derived from `GUIElementBase` or use classes from `GUILibrary`.
 
 `GUIElementBase` allows you to easily combine basic `GUIObject` elements. To show a `GUIElementBase` element to a player you should to use `Representation` class which acts as `ICollection` for `GUIElementBase`.
+
 **For example** this is a constructor for `GUIButton` class (`GUILibrary`):
 ```csharp
 public GUIObject TextElement;
@@ -50,6 +56,7 @@ public GUIButton(string text = "", string elementName = null, string parent = nu
 }
 ```
 Every class derived from `GUIElementBase` should implement its own `Render` method.
+
 **For example:**
 ```csharp
 public override ICollection<GUIObject> Render()
@@ -60,6 +67,11 @@ public override ICollection<GUIObject> Render()
 The method is pretty straightforward. But one thing is — you should follow the inheritance order. So the previous element should be a parent of the next element.
 
 If no name is present for `GUIObject` it generates the name automatically using `GUIObject.GenerateId()`.
+
+## Components
+Currently not all supported components are presented.
+
+`RectTransformComponent` should be added at the end. Instead it will not work.
 
 ## Data binding
 Data binding is WIP. Examples can be found inside `GUILibrary`.
